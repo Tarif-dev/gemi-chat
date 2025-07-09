@@ -1,7 +1,7 @@
 import Image from "next/image";
-import ChatInput from "@/components/ChatInput";
-import SidePanel from "@/components/SidePanel";
-import User from "@/components/User";
+import ChatInput from "../components/ChatInput";
+import SidePanel from "../components/SidePanel";
+import User from "../components/User";
 
 export default function Home() {
   return (
