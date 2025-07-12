@@ -1,6 +1,6 @@
 import User from "@/models/userModel";
 import nodemailer from "nodemailer";
-import bcrypt from "bcrypt"
+import bcrypt from "bcrypt";
 
 export const sendEmail = async ({ email, emailType, userId }) => {
   try {
@@ -20,13 +20,13 @@ export const sendEmail = async ({ email, emailType, userId }) => {
     }
 
     const transporter = nodemailer.createTransport({
-  host: "sandbox.smtp.mailtrap.io",
-  port: 2525,
-  auth: {
-    user: "9068b6cea50308",
-    pass: "8831073c3fb356"
-  }
-});
+      host: "sandbox.smtp.mailtrap.io",
+      port: 2525,
+      auth: {
+        user: "9068b6cea50308",
+        pass: "8831073c3fb356",
+      },
+    });
     const mailOptions = {
       from: "tarifhussain212@gmail.com",
       to: email,
@@ -35,7 +35,9 @@ export const sendEmail = async ({ email, emailType, userId }) => {
       html: `<p>Click Here to verify</p>
       <button href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">Verify</button>
       <p>Or log on to the following link</p>
-      <a href=href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">"${process.env.DOMAIN}/verifyemail?token=${hashedToken}"</a>`, // HTML body
+      <a href=href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">"${process.env.DOMAIN}/verifyemail?token=${hashedToken}"</a>
+      <br>
+      <h3>Token : ${hashedToken}</h3>`, // HTML body
     };
 
     const mailResponse = await transporter.sendMail(mailOptions);
